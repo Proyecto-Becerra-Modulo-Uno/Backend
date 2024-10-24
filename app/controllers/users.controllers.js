@@ -46,6 +46,7 @@ export const mostrarUsuarios = async(req, res) => {
 // Mostrar un solo usuario
 export const mostrarUsuario = async(req, res) => {
     const {id} = req.params;
+    
     try {
         const request = await basedatos.query('CALL SP_BuscarUsuario(?)', [id]);
         success(req, res, 200, request[0][0]);
@@ -64,6 +65,7 @@ export const logueoUsuario = async (req, res) => {
     try {
         // Verificar si el usuario existe y obtener su rol, contraseña y estado
         const [request] = await basedatos.query('CALL SP_VERIFICAR_ROLES(?)', [usuario]);
+
 
         if (request[0].length === 0) {
             console.log('Usuario no encontrado');
