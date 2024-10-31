@@ -133,7 +133,6 @@ export const listarPoliticasSeguridad = async(req, res) => {
 }
 
 export const CambiarConfiguraciónDesactivarUser = async (req, res) => {
-    // Desestructuramos los parámetros del cuerpo de la solicitud
     const { 
         tiempoInactividad, 
         unidadInactividad, 
