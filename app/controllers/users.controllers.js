@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import { basedatos } from "../config/mysql.db.js";
 import jwt from "jsonwebtoken";
 import { error, success } from "../messages/browser.js";
+import { jwtDecode } from "jwt-decode";
 
 import jsPDF from 'jspdf';
 
@@ -114,7 +115,20 @@ export const logueoUsuario = async (req, res) => {
         const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
 
         // Respuesta exitosa con el token
-        success(req, res, 200, { token: token, rol: id_rol, platform: os, ip: ip, id: id });
+        if (id_rol == 1) {
+            success(req, res, 200, { token: token, rol: id_rol, platform: os, ip: ip, id: id, ruta: "/usuario" });
+        } else if (id_rol == 2) {
+            success(req, res, 200, { token: token, rol: id_rol, platform: os, ip: ip, id: id, ruta: "/invitado" });
+        }else if(id_rol == 3){
+            success(req, res, 200, { token: token, rol: id_rol, platform: os, ip: ip, id: id, ruta: "/panel" });
+        } else if (id_rol == 4) {
+            success(req, res, 200, { token: token, rol: id_rol, platform: os, ip: ip, id: id, ruta: "/moderador" });
+        }
+
+        const decodedToken = jwtDecode(token)
+
+        console.log(decodedToken);
+        
 
     } catch (e) {
         console.error(e);
