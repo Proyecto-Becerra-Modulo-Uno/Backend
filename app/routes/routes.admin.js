@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { verifyToken } from "../middlewares/oauth.js";
 
-import { asignarRolUsuario, bloquearUsuario, desbloquearUsuario, listarBloqueos, registroInicioSesion, listarPoliticasSeguridad, listarSesiones} from "../controllers/admin.controllers.js";
+import { asignarRolUsuario, bloquearUsuario, desbloquearUsuario, listarBloqueos, registroInicioSesion, listarPoliticasSeguridad, listarSesiones, CambiarConfiguraciónDesactivarUser, configuracionDesactivaUsuario} from "../controllers/admin.controllers.js";
 
 import { crearGrupo, addParticipantes, obtenerGrupo, listar_grupos } from "../controllers/groups.controllers.js";
 
@@ -10,10 +10,14 @@ import { backupDatabase, restoreDatabase, listBackups, listUserBackups, backupUs
 import { getAllCertificates, renewCertificate } from "../controllers/certificateController.js";
 import { crear_intervalo_contrasena} from "../controllers/users.controllers.js";
 import { contarActividadesPorDia, contarAdministradoresPorEstado, contarCertificadosPorEstado, obtenerActividadesSospechosas, obtenerAdministradoresActivos, obtenerEstadoCertificados, obtenerPoliticasBloqueo } from "../controllers/securityController.js";
+import { actualizarPoliticasBloqueo } from "../controllers/blockingPoliciesController.js";
 
 const rutaAdmin = Router();
 
 // Rutas organizadas
+
+rutaAdmin.get('/admin/mostrar-configuracion-desactivacion', configuracionDesactivaUsuario);
+rutaAdmin.put('/admin/cambiar-configuracion-desactivacion', CambiarConfiguraciónDesactivarUser);
 
 rutaAdmin.post('/admin/asignar-rol', asignarRolUsuario);
 rutaAdmin.put("/admin/estado/:id", bloquearUsuario);

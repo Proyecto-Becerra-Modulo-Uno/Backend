@@ -131,3 +131,60 @@ export const listarPoliticasSeguridad = async(req, res) => {
         error(req, res, 500, "Error al listar políticas");
     }
 }
+
+export const CambiarConfiguraciónDesactivarUser = async (req, res) => {
+    // Desestructuramos los parámetros del cuerpo de la solicitud
+    const { 
+        tiempoInactividad, 
+        unidadInactividad, 
+        tiempoNotificacion, 
+        unidadNotificacion, 
+        tiempoEliminacion, 
+        unidadEliminacion, 
+        tiempoGuardar, 
+        unidadGuardar, 
+        tiempoReactivacion, 
+        unidadReactivacion 
+    } = req.body;
+
+    try {
+        // Llamada al procedimiento almacenado con los parámetros de inactividad
+        const [respuesta] = await basedatos.query(
+            'CALL SP_InactivarUsuario(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);',
+            [
+                tiempoInactividad,
+                unidadInactividad,
+                tiempoNotificacion,
+                unidadNotificacion,
+                tiempoEliminacion,
+                unidadEliminacion,
+                tiempoGuardar,
+                unidadGuardar,
+                tiempoReactivacion,
+                unidadReactivacion
+            ]
+        );
+
+        // Verificamos el resultado de la llamada
+        if (respuesta.affectedRows > 0) {
+            // Respuesta de éxito si el procedimiento modificó filas
+            res.status(200).json({ message: "Configuración de inactividad guardada exitosamente" });
+        } else {
+            // Respuesta de error si no hubo filas modificadas
+            res.status(400).json({ message: "No se pudo actualizar la configuración de inactividad" });
+        }
+    } catch (err) {
+        console.error("Error al actualizar configuración de inactividad:", err);
+        // Respuesta de error en caso de fallo en el servidor
+        res.status(500).json({ message: "Error interno del servidor al actualizar configuración de inactividad" });
+    }
+};
+
+export const configuracionDesactivaUsuario = async(req, res) => {
+    try {
+        const respuesta = await basedatos.query('CALL SP_MostrarDesactivacionUsuario();');
+        success(req, res, 200, respuesta[0][0]);
+    } catch (err) {
+        error(req, res, 200, err || "Error interno del servidor")
+    }
+}
