@@ -6,7 +6,8 @@ config();
 
 
 export const verifyToken = (req, res, next) => {
-  const token = req.headers['x-access-token'] || req.headers['authorization'];
+  const authHeader = req.headers['x-access-token'] || req.headers['authorization'];
+  const token = authHeader && authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : authHeader;
 
   if (!token) {
       return error(req, res, 403, 'Token not provided.');
@@ -20,6 +21,7 @@ export const verifyToken = (req, res, next) => {
       next();
   });
 };
+
 
 // Tiempo de Expiracion
 const sessionConfig = session({
