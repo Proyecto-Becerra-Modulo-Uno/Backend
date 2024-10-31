@@ -19,36 +19,28 @@ rutaAdmin.post('/admin/asignar-rol', asignarRolUsuario);
 rutaAdmin.put("/admin/estado/:id", bloquearUsuario);
 rutaAdmin.put("/admin/desbloquear-usuario", desbloquearUsuario);
 rutaAdmin.get("/admin/cuentas-bloqueadas", listarBloqueos);
-
 // Historial de sesiones iniciadas
-
 rutaAdmin.post("/admin/historial-sesion", registroInicioSesion);
-
 // Politicas de contraseñas
-
-rutaAdmin.get("/politicas", listarPoliticasSeguridad);
-
+rutaAdmin.get("/admin/listar-politicas", listarPoliticasSeguridad);
 // Rutas para grupos
 
 rutaAdmin.post("/admin/crear-grupo", crearGrupo);
 rutaAdmin.post("/admin/añadir-integrante", addParticipantes);
 rutaAdmin.get("/admin/ultimo-grupo", obtenerGrupo);
 rutaAdmin.get("/admin/listar-grupos", listar_grupos);
-
-
 rutaAdmin.get("/admin/lista-sesiones", listarSesiones)
-
 rutaAdmin.get("/oauth", verifyToken, validarToken);
+rutaAdmin.post('/admin/restore-users', restoreUserData);
 
 // Nueva ruta para actualizar las políticas de bloqueo
-// rutaAdmin.post("/update-blocking-policies", verifyToken, actualizarPoliticasBloqueo);
+rutaAdmin.post("/update-blocking-policies", verifyToken, actualizarPoliticasBloqueo);
 
 // Rutas desorganizadas
 
 rutaAdmin.get("/token", verifyToken);
 rutaAdmin.get('/user-backups', listUserBackups);
 rutaAdmin.post('/user-backup', backupUserData);
-rutaAdmin.post('/restore-users', restoreUserData);
 rutaAdmin.get('/backups', listBackups);
 rutaAdmin.post('/backup', backupDatabase);
 rutaAdmin.post('/restore', restoreDatabase);

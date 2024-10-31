@@ -125,10 +125,7 @@ export const logueoUsuario = async (req, res) => {
             success(req, res, 200, { token: token, rol: id_rol, platform: os, ip: ip, id: id, ruta: "/moderador" });
         }
 
-        const decodedToken = jwtDecode(token)
-
-        console.log(decodedToken);
-        
+        const decodedToken = jwtDecode(token)        
 
     } catch (e) {
         console.error(e);
@@ -259,11 +256,6 @@ export const generarPDFRegistrosInicioSesion = async (req, res) => {
         return error(req, res, 500, "Error al generar el PDF de registros de inicio de sesión");
     }
 }
-
-
-
-
-
 
 export const listarPoliticasYTerminos = async(req, res) => {
     try {

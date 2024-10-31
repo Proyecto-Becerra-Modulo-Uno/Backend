@@ -18,32 +18,31 @@ const userRout = Router();
 userRout.post("/users", crearUsuario);
 userRout.get("/users", mostrarUsuarios);
 userRout.post('/users/login', logueoUsuario);
+userRout.get("/users/:id", mostrarUsuario);
+userRout.put("/users/bloquear-intentos",  bloquearUsuarioIntentos);
 
 
 // Rutas desorganizadas
 
-userRout.get("/users/:id", mostrarUsuario);
-// userRout.put("/actualizar-politicas", actualizarPoliticasSeguridad);
-// userRout.get("/listarPoliticasYTerminos", listarPoliticasYTerminos);
-// userRout.put("/actualizarComplePreguntas", actualizarComplejidadPreguntas);
-// userRout.get("/listarComplePreguntas", listarComplejidadPreguntas);
+userRout.put("/actualizar-politicas", actualizarPoliticasSeguridad);
+userRout.get("/listarPoliticasYTerminos", listarPoliticasYTerminos);
+userRout.put("/actualizarComplePreguntas", actualizarComplejidadPreguntas);
+userRout.get("/listarComplePreguntas", listarComplejidadPreguntas);
 
-// userRout.put("/actualizar-tiempo", actualizarTiempoIntentos);
-// userRout.get("/actividades-sospechosas", obtenerActividadesSospechosas);
-// userRout.get('/registros-inicio-sesion', obtenerRegistrosInicioSesion);
-// userRout.get('/registros-inicio-sesion-pdf', generarPDFRegistrosInicioSesion);
-// userRout.post('/addIpToList', addIpToList);
-// userRout.put("/actualizar-politicas", actualizarPoliticasSeguridad)
+userRout.put("/actualizar-tiempo", actualizarTiempoIntentos);
+userRout.get("/actividades-sospechosas", obtenerActividadesSospechosas);
+userRout.get('/registros-inicio-sesion', obtenerRegistrosInicioSesion);
+userRout.get('/registros-inicio-sesion-pdf', generarPDFRegistrosInicioSesion);
+userRout.post('/addIpToList', addIpToList);
+userRout.put("/actualizar-politicas", actualizarPoliticasSeguridad)
 
-// userRout.post("/datos", actualizarPoliticasRetencion);
-// userRout.put("/bloquearIntentos",  bloquearUsuarioIntentos);
-// userRout.get("/logs-prueba", getLogs)
-// userRout.get("/modulos", GETModulosYpermisos);
-// userRout.post("/estado", ActualizarEstado);
-// userRout.get("/logs-prueba", getLogs);
-// userRout.get("/exportar", exportarDatos)
-// userRout.get("/permisos", permisos)
-// userRout.put("/actualizar-politicas", actualizarPoliticasSeguridad)
+userRout.post("/datos", actualizarPoliticasRetencion);
+userRout.get("/logs-prueba", getLogs)
+userRout.get("/modulos", GETModulosYpermisos);
+userRout.post("/estado", ActualizarEstado);
+userRout.get("/exportar", exportarDatos)
+userRout.get("/permisos", permisos)
+userRout.put("/actualizar-politicas", actualizarPoliticasSeguridad)
 userRout.post("/datos", actualizarPoliticasRetencion);
 
 export default userRout;
