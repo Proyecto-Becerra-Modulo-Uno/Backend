@@ -1,0 +1,40 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Apex",
+    "collectionId": "559a4434-e646-45d2-a6ce-dfd91de5830e",
+    "dateExported": "2024-08-27T23:42:17.882Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "369dbf5a-8bb5-4711-b139-7a9c92b38d1c",
+            "colId": "559a4434-e646-45d2-a6ce-dfd91de5830e",
+            "containerId": "",
+            "name": "asignar-Rol",
+            "url": "http://localhost:3000/users/asignar-rol",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-08-27T23:39:59.917Z",
+            "modified": "2024-08-27T23:39:59.917Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"usuarioId\": 3,\n  \"rolId\": 3\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "828e8f37-b90d-401b-a395-689de0c779af",
+            "colId": "559a4434-e646-45d2-a6ce-dfd91de5830e",
+            "containerId": "",
+            "name": "listarUsers",
+            "url": "http://localhost:3000/users/",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-08-27T23:41:49.329Z",
+            "modified": "2024-08-27T23:42:03.829Z",
+            "headers": []
+        }
+    ],
+    "ref": "XJPmZerCC9ByfUfp9EyryzdEzEjhJuLgpCUauLptOU-w9ssRR4SCKyGNuIVmLy7aZ8yIfOsON_1hZwO43u_UqQ"
+}
